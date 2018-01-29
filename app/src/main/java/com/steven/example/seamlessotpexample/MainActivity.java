@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private AppCompatEditText mDigit1, mDigit2, mDigit3, mDigit4;
     private SmsVerifyCatcher mSmsVerifyCatcher;
     private static final int READ_SMS_PERMISSION = 104;
+    private static final String PHONE_NUMBER = "123456789";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,12 +70,12 @@ public class MainActivity extends AppCompatActivity {
     private void catchSMS() {
         mSmsVerifyCatcher = new SmsVerifyCatcher(this, message -> {
             logMessage(message);
-            mDigit1.setText(message.charAt(0));
-            mDigit2.setText(message.charAt(1));
-            mDigit3.setText(message.charAt(2));
-            mDigit4.setText(message.charAt(3));
+            mDigit1.setText(String.valueOf(message.charAt(0)));
+            mDigit2.setText(String.valueOf(message.charAt(1)));
+            mDigit3.setText(String.valueOf(message.charAt(2)));
+            mDigit4.setText(String.valueOf(message.charAt(3)));
         });
-        mSmsVerifyCatcher.setPhoneNumberFilter("+6283197828031");
+        mSmsVerifyCatcher.setPhoneNumberFilter(PHONE_NUMBER);
     }
 
     private void logMessage(String message) {
